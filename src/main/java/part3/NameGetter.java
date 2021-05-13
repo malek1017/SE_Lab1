@@ -8,7 +8,7 @@ public class NameGetter {
     }
 
     public void connect() {
-//        database.connect("", "", "");
+        database.connect("", "", "");
     }
 
     /**
@@ -16,6 +16,6 @@ public class NameGetter {
      * @return the name of the user or null if not connected or not found
      */
     public String getName(int id) {
-        return "";
+        return database.getName(id);
     }
 }

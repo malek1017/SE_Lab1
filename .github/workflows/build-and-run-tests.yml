@@ -21,23 +21,26 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Step 1 - Checkout to the project directory
-        uses: actions/checkout@v2
-
-      - name: Step 2 - Show working directory
+      - name: Step 1 - Show working directory
         run: ls
 
-      - name: Step 3 - Ensure maven is installed
+      - name: Step 2 - Checkout to the project directory
+        uses: actions/checkout@v2
+
+      - name: Step 3 - Show working directory
+        run: ls
+
+      - name: Step 4 - Ensure maven is installed
         run: mvn --version
 
-      - name: Step 4 - Setup JavaJDK
+      - name: Step 5 - Setup JavaJDK
         uses: actions/setup-java@v2.0.0
         with:
           java-version: 14
           distribution: 'adopt'
 
-      - name: Step 5 - Build the project
+      - name: Step 6 - Build the project
         run: mvn package -DskipTests
 
-      - name: Step 6 - Run all tests
+      - name: Step 7 - Run all tests
         run: mvn test

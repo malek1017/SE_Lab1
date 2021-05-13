@@ -11,6 +11,10 @@ public class NameGetter {
         database.connect("", "", "");
     }
 
+    public void disconnect() {
+        database.disconnect();
+    }
+
     /**
      * @param id unique id to identify the user
      * @return the name of the user or null if not connected or not found

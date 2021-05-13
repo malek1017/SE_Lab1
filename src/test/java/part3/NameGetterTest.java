@@ -1,5 +1,7 @@
 package part3;
 
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import org.junit.Assert;
@@ -42,6 +44,19 @@ public class NameGetterTest {
         var name = nameGetter.getName(0);
 
         Assert.assertNull(name);
+    }
+
+    @Test
+    public void disconnectingAfterConnectingSuccessfullyDisconnectsFromTheDatabase() {
+        var nameGetter = new NameGetter(fakeDatabase);
+
+        nameGetter.connect();
+        var connectionStatusAfterConnecting = fakeDatabase.isConnected();
+        nameGetter.disconnect();
+        var connectionStatusAfterDisconnecting = fakeDatabase.isConnected();
+
+        Assert.assertNotEquals(connectionStatusAfterConnecting, connectionStatusAfterDisconnecting);
+        Assert.assertFalse(connectionStatusAfterDisconnecting);
     }
 
     @Test
